@@ -1,0 +1,155 @@
+<form [formGroup]="form" (ngSubmit)="saveEmployee($event)">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Usuario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input placeholder="Id" formControlName="id" matInput type="text" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Primer Apellido"
+              formControlName="surname"
+              matInput
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Segundo Apellido"
+              formControlName="secondSurname"
+              matInput
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Primer Nombre"
+              formControlName="firstName"
+              matInput
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Otros Nombres"
+              formControlName="otherNames"
+              matInput
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field appearance="fill">
+            <mat-label>Pais Empleo</mat-label>
+            <mat-select [formControlName]="'country'">
+              <mat-option
+                *ngFor="let count of country"
+                value="{{ count.id }}"
+                >{{ count.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field appearance="fill">
+            <mat-label>Tipo Identificacion</mat-label>
+            <mat-select [formControlName]="'identificationType'">
+              <mat-option
+                *ngFor="let it of identificationType"
+                value="{{ it.id }}"
+                >{{ it.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Numero Identificacion"
+              formControlName="identificationNumber"
+              matInput
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Correo Electronico"
+              formControlName="email"
+              matInput
+              type="email"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Fecha Ingreso"
+              formControlName="admissionDate"
+              matInput
+              type="date"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field appearance="fill">
+            <mat-label>Area</mat-label>
+            <mat-select [formControlName]="'workArea'">
+              <mat-option *ngFor="let area of workArea" value="{{ area.id }}">{{
+                area.name
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input
+              placeholder="Fecha y Hora de Registro"
+              formControlName="createAt"
+              matInput
+              type="datetime-local"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button type="submit">Guardar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
