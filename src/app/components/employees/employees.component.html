@@ -65,6 +65,7 @@
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let user">
         <button mat-raised-button color="warn" (click)="eliminarUser(user.id)">Eliminar</button>
+        <button mat-raised-button color="primary" (click)="id = user.id; changeStatusAction('addEdit')">Editar</button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -72,5 +73,5 @@
   </table>
 </div>
 <div *ngIf="statusAction === 'addEdit'">
-  <app-employee (saved)="changeStatusAction($event)"></app-employee>
+  <app-employee [id]="id" (saved)="changeStatusAction($event)"></app-employee>
 </div>

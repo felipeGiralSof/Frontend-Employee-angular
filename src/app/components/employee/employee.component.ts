@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Country, IdentificationType, WorkArea} from 'src/app/models/employee.model';
 import {EmployeesService} from '../../services/employees.service'
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class EmployeeComponent implements OnInit {
   @Output() saved = new EventEmitter<string>();
+  @Input() id: number = 0;
 
   public form : FormGroup;
   country: Country[] = [];
@@ -50,6 +51,7 @@ export class EmployeeComponent implements OnInit {
       employee.identificationType = this.identificationType[0];
       employee.workArea = this.workArea[0];
       employee.country = this.country[0];
+
       if(employee.id) {
         this.employeesService.edit(employee).subscribe((newEmployee) => {
           this.saved.emit('table');
@@ -61,4 +63,5 @@ export class EmployeeComponent implements OnInit {
       }
     }
   }
+
 }

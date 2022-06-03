@@ -10,13 +10,13 @@ import {EmployeesService} from '../../services/employees.service'
 export class EmployeesComponent implements OnInit {
   statusAction: string = 'table';
   users: Employee[] = [];
+  id: number = 0;
   displayedColumns: string[] = [
     "id", "surname", "secondSurname", "firstName", "otherNames", "country", "identificationType",
     "identificationNumber", "email", "admissionDate", "workArea", "status", "createAt", "actions"
   ];
 
   constructor(private employeesService: EmployeesService) {}
-
 
   ngOnInit(): void { this.getUser().then(); }
 
@@ -31,6 +31,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   changeStatusAction(event:string) {
+    this.id = 0;
     this.getUser().then(data => {
       this.statusAction = event;
     });

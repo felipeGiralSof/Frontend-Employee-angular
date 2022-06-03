@@ -7,13 +7,6 @@
       <div class="row">
         <div class="col-xs">
           <mat-form-field>
-            <input placeholder="Id" formControlName="id" matInput type="text" />
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs">
-          <mat-form-field>
             <input
               placeholder="Primer Apellido"
               formControlName="surname"
@@ -80,7 +73,7 @@
             <mat-select [formControlName]="'identificationType'">
               <mat-option
                 *ngFor="let it of identificationType"
-                value="{{ it.id }}"
+                value="{{ it }}"
                 >{{ it.name }}</mat-option
               >
             </mat-select>
@@ -150,6 +143,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button type="submit">Guardar</button>
+      <button mat-raised-button type="submit" color="warn" (click)="saved.emit('table');">Salir</button>
     </mat-card-actions>
   </mat-card>
 </form>
