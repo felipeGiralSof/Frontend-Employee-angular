@@ -31,4 +31,8 @@ export class EmployeesService {
   getIdentificationType() {
     return this.http.get<IdentificationType[]>(`${environment.API_URL}/identification_type`);
   }
+
+  removeUser(id: number) {
+    return this.http.get(`${environment.API_URL}/employee/delete/${id}`);
+  }
 }

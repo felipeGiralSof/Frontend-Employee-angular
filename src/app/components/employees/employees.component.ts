@@ -17,12 +17,29 @@ export class EmployeesComponent implements OnInit {
 
   constructor(private employeesService: EmployeesService) {}
 
-  ngOnInit(): void {
-    this.employeesService.getAllUsers()
-    .subscribe(data => { this.users = data; });
+
+  ngOnInit(): void { this.getUser().then(); }
+
+  getUser() {
+    return new Promise((solve) => {
+      this.employeesService.getAllUsers()
+        .subscribe(data => {
+          this.users = data;
+          solve(data);
+        });
+    });
   }
 
-  changeStatusAction(action: string) {
-    this.statusAction = action
+  changeStatusAction(event:string) {
+    this.getUser().then(data => {
+      this.statusAction = event;
+    });
   }
-}
+
+  eliminarUser(id: number) {
+    this.employeesService.removeUser(id)
+      .subscribe(data => {
+        this.getUser().then()
+      });
+  }
+ }
