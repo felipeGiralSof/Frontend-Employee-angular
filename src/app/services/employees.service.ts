@@ -24,6 +24,10 @@ export class EmployeesService {
     return this.http.post<Employee>(`${environment.API_URL}/employee`, dto);
   }
 
+  edit(dto: CreateEmployeeDTO){
+    return this.http.post<Employee>(`${environment.API_URL}/employee/edit`, dto);
+  }
+
   getWorkArea() {
     return this.http.get<WorkArea[]>(`${environment.API_URL}/work_area`);
   }

@@ -50,10 +50,15 @@ export class EmployeeComponent implements OnInit {
       employee.identificationType = this.identificationType[0];
       employee.workArea = this.workArea[0];
       employee.country = this.country[0];
-      if(!employee.id) employee.id = 0;
-      this.employeesService.create(employee).subscribe((newEmployee) => {
-        this.saved.emit('table');
-      });
+      if(employee.id) {
+        this.employeesService.edit(employee).subscribe((newEmployee) => {
+          this.saved.emit('table');
+        });
+      } else {
+        this.employeesService.create(employee).subscribe((newEmployee) => {
+          this.saved.emit('table');
+        });
+      }
     }
   }
 }
